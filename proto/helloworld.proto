@@ -1,0 +1,47 @@
+syntax = "proto3";
+package helloworld;
+
+
+//服务定义
+service Greeter{
+    //SayHello 是一个简单的 PRC 方法
+    rpc SayHello (HelloRequest) returns (HelloReply);
+
+    //客户端上传文件
+    rpc UploadFile (FileRequest) returns (FileResponse);
+
+    //客户端下载文件
+    rpc DownloadFile (DownloadRequest) returns (DownloadResponse);
+}
+
+//SayHello  Request
+message HelloRequest{
+    string name = 1;
+}
+
+//SayHello  Reply
+message HelloReply{
+    string message = 1;
+}
+
+//upload file Request
+message FileRequest {
+    string file_name = 1; //文件名
+    bytes file_content = 2; //文件
+}
+
+//upload file Response
+message FileResponse {
+    string message = 1;
+}
+
+//download file request
+message DownloadRequest {
+    string file_name = 1;
+}
+
+//download file response
+message DownloadResponse {
+    string file_name = 1;
+    bytes file_content = 2;
+}
